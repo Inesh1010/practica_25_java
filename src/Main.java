@@ -5,129 +5,114 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("================= DECIMAL IPS =================");
 
-        String zeroTo255 = "(\\d{1,2}|(0|1)\\d{2}|2[0-4]\\d|25[0-5])";
-        String regex = "^" + zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255 + "$";
-        String[] ips = new String[10];
+        System.out.println("========== BINARY IPS =============");
 
-        ips[0] = "177.204.237.247";
-        ips[1] = "205.264.92.125"; // not valid
-        ips[2] = "29.192.220.120";
-        ips[3] = "16.203.39.255";
-        ips[4] = "20.7.256.167"; // not valid
-        ips[5] = "1.34.161.167";
-        ips[6] = "1.168.111.69";
-        ips[7] = "17.2282.213.63"; // not valid
-        ips[8] = "80.232.65.220";
-        ips[9] = "221.80.250.91";
+        String oneByte = "((0|1){8})";
+        String regex = "^" + oneByte + "\\." + oneByte + "\\." + oneByte + "\\." + oneByte + "$";
+        String[] addresses = new String[10];
 
-        // create a pattern
+        addresses[0] = "00101001.00000111.00110101.00100011";
+        addresses[1] = "01111110.11111010.11000010.01001111";
+        addresses[2] = "11111100.10001100.00011011.110111111";
+        addresses[3] = "111011011.01101010.00111110.11111101";
+        addresses[4] = "11000010.11111110.00011110.01111110";
+        addresses[5] = "10100011.10100010.01111110.00110110";
+        addresses[6] = "111011011.01101010.00111110.11111101";
+        addresses[7] = "11001100.00101100.11001101.11111101";
+        addresses[8] = "10110000.00010100.10000010.00110111";
+        addresses[9] = "10111100.11100001.10011000.00100001";
+
         Pattern pattern = Pattern.compile(regex);
 
-        // get a matcher object
 
-        for (String ip: ips) {
-            Matcher matcher = pattern.matcher(ip);
+        for (String address: addresses) {
+            Matcher matcher = pattern.matcher(address);
             if (matcher.find())
-                System.out.println(matcher.group() + " is valid");
+                System.out.println(matcher.group() + " корректен");
             else
-                System.out.println(ip + " not valid");
-        }
-
-        System.out.println("========== HEXADECIMAL IPS =============");
-
-        String zeroTo255hex = "(\\d{1,2}|\\d[a-f]|[a-f]\\d|[a-f]{1,2})";
-        String regexHex = "^" + zeroTo255hex + "\\." + zeroTo255hex + "\\." + zeroTo255hex + "\\." + zeroTo255hex + "$";
-        String[] ipsHex = new String[10];
-
-        ipsHex[0] = "21.47.02.45";
-        ipsHex[1] = "7f.100.e6.ee"; // not valid
-        ipsHex[2] = "0f.5e.e5.58";
-        ipsHex[3] = "08.8b.a9.fff"; // not valid
-        ipsHex[4] = "1c.7c.9a.53";
-        ipsHex[5] = "bf.cb.81.e6";
-        ipsHex[6] = "abc.a2.3f.cc"; // not valid
-        ipsHex[7] = "1d.7f.d2.32";
-        ipsHex[8] = "a7.2f.cb.4a";
-        ipsHex[9] = "cb.d3.eb.94";
-
-        // create a pattern
-        Pattern patternHex = Pattern.compile(regexHex);
-
-        // get a matcher object
-
-        for (String ipHex: ipsHex) {
-            Matcher matcher = patternHex.matcher(ipHex);
-            if (matcher.find())
-                System.out.println(matcher.group() + " is valid");
-            else
-                System.out.println(ipHex + " not valid");
+                System.out.println(address + " не корректен");
         }
 
         System.out.println("========== OCTAL IPS =============");
 
-        String zeroTo255Octal = "([0-7]{1,2}|[0-3][0-7]{2})";
-        String regexOctal = "^" + zeroTo255Octal + "\\." + zeroTo255Octal + "\\." + zeroTo255Octal + "\\." + zeroTo255Octal + "$";
-        String[] ipsOctal = new String[10];
+        oneByte = "([0-7]{1,2}|[0-3][0-7]{2})";
+        regex = "^" + oneByte + "\\." + oneByte + "\\." + oneByte + "\\." + oneByte + "$";
 
-        ipsOctal[0] = "027.313.375.203";
-        ipsOctal[1] = "143.157.022.263";
-        ipsOctal[2] = "224.340.303.400"; // not valid
-        ipsOctal[3] = "025.354.213.341";
-        ipsOctal[4] = "166.145.230.114";
-        ipsOctal[5] = "312.220.211.063";
-        ipsOctal[6] = "107.203.026.274";
-        ipsOctal[7] = "355.324.136.555"; // not valid
-        ipsOctal[8] = "222.364.223.223";
-        ipsOctal[9] = "378.015.255.160"; // not valid
 
-        // create a pattern
-        Pattern patternOctal = Pattern.compile(regexOctal);
+        addresses[0] = "312.220.211.063";
+        addresses[1] = "025.354.213.341";
+        addresses[2] = "355.324.136.555";
+        addresses[3] = "355.324.136.555";
+        addresses[4] = "027.313.375.203";
+        addresses[5] = "222.364.223.223";
+        addresses[6] = "107.203.026.274";
+        addresses[7] = "166.145.230.114";
+        addresses[8] = "224.340.303.400";
+        addresses[9] = "027.313.375.203";
 
-        // get a matcher object
+        pattern = Pattern.compile(regex);
 
-        for (String ipOctal: ipsOctal) {
-            Matcher matcher = patternOctal.matcher(ipOctal);
+        for (String address: addresses) {
+            Matcher matcher = pattern.matcher(address);
             if (matcher.find())
-                System.out.println(matcher.group() + " is valid");
+                System.out.println(matcher.group() + " корректен");
             else
-                System.out.println(ipOctal + " not valid");
+                System.out.println(address + " не корректен");
         }
 
-        System.out.println("========== BINARY IPS =============");
+        System.out.println("========== HEXADECIMAL IPS =============");
 
-        String zeroTo255Bin = "((0|1){8})";
-        String regexBin = "^" + zeroTo255Bin + "\\." + zeroTo255Bin + "\\." + zeroTo255Bin + "\\." + zeroTo255Bin + "$";
-        String[] ipsBin = new String[10];
+        oneByte = "(\\d{1,2}|\\d[a-f]|[a-f]\\d|[a-f]{1,2})";
+        regex = "^" + oneByte + "\\." + oneByte + "\\." + oneByte + "\\." + oneByte + "$";
 
-        ipsBin[0] = "10111100.11100001.10011000.00100001";
-        ipsBin[1] = "10110000.00010100.10000010.00110111";
-        ipsBin[2] = "11001100.00101100.11001101.11111101";
-        ipsBin[3] = "111011011.01101010.00111110.11111101"; // not valid
-        ipsBin[4] = "00111001.00101010.11111011.00100001";
-        ipsBin[5] = "10100010.10000010.01111110.00100110";
-        ipsBin[6] = "11000010.11111110.00011110.01111110";
-        ipsBin[7] = "11111100.10001100.00011011.110111111"; // not valid
-        ipsBin[8] = "01111110.11111010.11000010.01001111";
-        ipsBin[9] = "00101001.00000111.00110101.00100011";
+        addresses[0] = "cb.d3.eb.94";
+        addresses[1] = "7f.100.e6.ee";
+        addresses[2] = "08.8b.a9.fff";
+        addresses[3] = "1c.7c.9a.53";
+        addresses[4] = "a7.2f.cb.4a";
+        addresses[5] = "abc.a2.3f.cc";
+        addresses[6] = "21.47.02.45";
+        addresses[7] = "bf.cb.81.e6";
+        addresses[8] = "0f.5e.e5.58";
+        addresses[9] = "1d.7f.d2.32";
 
-        // create a pattern
-        Pattern patternBin = Pattern.compile(regexBin);
 
-        // get a matcher object
+        pattern = Pattern.compile(regex);
 
-        for (String ipBin: ipsBin) {
-            Matcher matcher = patternBin.matcher(ipBin);
+        for (String address: addresses) {
+            Matcher matcher = pattern.matcher(address);
             if (matcher.find())
-                System.out.println(matcher.group() + " is valid");
+                System.out.println(matcher.group() + " корректен");
             else
-                System.out.println(ipBin + " not valid");
+                System.out.println(address + " не корректен");
         }
 
-        System.out.println("=========== PARENTHESIS MATCH ==============");
+        System.out.println("================= DECIMAL IPS =================");
 
-        System.out.println("IMPOSSIBLE WITHOUT RECURSION");
+        oneByte = "(\\d{1,2}|(0|1)\\d{2}|2[0-4]\\d|25[0-5])";
+        regex = "^" + oneByte + "\\." + oneByte + "\\." + oneByte + "\\." + oneByte + "$";
+
+        addresses[0] = "221.80.250.91";
+        addresses[1] = "80.232.65.220";
+        addresses[2] = "205.264.92.125";
+        addresses[3] = "1.168.111.69";
+        addresses[4] = "20.7.256.167";
+        addresses[5] = "17.2282.213.63";
+        addresses[6] = "29.192.220.120";
+        addresses[7] = "16.203.39.255";
+        addresses[8] = "177.204.237.247";
+        addresses[9] = "1.34.161.167";
+
+        pattern = Pattern.compile(regex);
+
+        for (String address: addresses) {
+            Matcher matcher = pattern.matcher(address);
+            if (matcher.find())
+                System.out.println(matcher.group() + " корректен");
+            else
+                System.out.println(address + " не корректен");
+        }
 
 
     }
